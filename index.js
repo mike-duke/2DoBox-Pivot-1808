@@ -3,26 +3,41 @@ var body = $('#body-input').val();
 var numCards = 0;
 var qualityVariable = "swill";
 
-var newCard = function(id , title , body , quality) {
-    return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
-            + title +  '</h2>'
-            + '<button class="delete-button"></button>'
-            +'<p class="body-of-card">'
-            + body + '</p>'
-            + '<button class="upvote"></button>' 
-            + '<button class="downvote"></button>' 
-            + '<p class="quality">' + 'quality:' + '<span class="qualityVariable">' + quality + '</span>' + '</p>'
-            + '<hr>' 
-            + '</div>';
+
+// var newCard = function(id , title , body , quality) {
+//     return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
+//             + title +  '</h2>'
+//             + '<button class="delete-button"></button>'
+//             +'<p class="body-of-card">'
+//             + body + '</p>'
+//             + '<button class="upvote"></button>' 
+//             + '<button class="downvote"></button>' 
+//             + '<p class="quality">' + 'quality:' + '<span class="qualityVariable">' + quality + '</span>' + '</p>'
+//             + '<hr>' 
+//             + '</div>';
+// };
+
+
+function createCard() {
+    var newCard = `<article class="card-container">
+                    <h2 class="title-of-card" contenteditable="true">${}</h2>
+                    <button class="delete-button"></button>
+                    <p class="body-of-card" contenteditable="true">${}</p>
+                    <button class="upvote"></button>
+                    <button class="downvote"></button>
+                    < class="quality">quality: 
+                    <span class="qualityVariable">${}</span></p>
+                    <hr>
+                    </article>`;
 };
 
-function cardObject() {
-    return {
-        title: $('#title-input').val(),
-        body: $('#body-input').val(),
-        quality: qualityVariable
-    };
-}
+function Task(title, body) {
+    this.title = title,
+    this.body = body,
+    this.quality = 0;
+    this.key = Date.now();
+};
+
 
 $.each(localStorage, function(key) {
     var cardData = JSON.parse(this);
