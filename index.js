@@ -8,9 +8,16 @@ $('.save-btn').on('click',function() {
 });
 
 $('.card-area').on('click', function(event) {
+    if (event.target === undefined) {
+        return;
+    }
     deleteCard(event);
     upvote(event);
     downvote(event);
+});
+
+$('.card-area').on('keydown', function(event) {
+    editCard(event);
 });
 
 function createCard(task) {
@@ -46,9 +53,11 @@ keyArray.forEach(function(key) {
 });
 
 function localStoreCard(task) {
+    console.log(task)
     var cardString = JSON.stringify(task);
     localStorage.setItem(task.key, cardString);
 };
+
 
 function getTask(event) {
     var cardHTML = $(event.target).closest('.card-container');
@@ -57,49 +66,6 @@ function getTask(event) {
     return retrieveTask;
 };
 
-// $(".card-area").on('click', function(event){
-//     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
-//     var qualityVariable;
-
-//     if (event.target.className === "upvote" || event.target.className === "downvote"){
-
-//         if (event.target.className === "upvote" && currentQuality === "plausible"){
-//             qualityVariable = "genius";
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-               
-//         } else if (event.target.className === "upvote" && currentQuality === "swill") {
-//             qualityVariable = "plausible";
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-               
-//         } else if (event.target.className === "downvote" && currentQuality === "plausible") {
-//             qualityVariable = "swill"
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-
-//         } else if (event.target.className === "downvote" && currentQuality === "genius") {
-//             qualityVariable = "plausible"
-//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-
-//         } else if (event.target.className === "downvote" && currentQuality === "swill") {
-//             qualityVariable = "swill";
-        
-//         } else if (event.target.className === "upvote" && currentQuality === "genius") {
-//             qualityVariable = "genius";
-//         }
-
-//     var cardHTML = $(event.target).closest('.card-container');
-//     var cardHTMLId = cardHTML[0].id;
-//     var cardObjectInJSON = localStorage.getItem(cardHTMLId);
-//     var cardObjectInJS = JSON.parse(cardObjectInJSON);
-
-//     cardObjectInJS.quality = qualityVariable;
-
-//     var newCardJSON = JSON.stringify(cardObjectInJS);
-//     localStorage.setItem(cardHTMLId, newCardJSON);
-//     }
-   
-// });
-
-      
 function deleteCard(event) {
 if (event.target.className === "delete-button") {
     var cardHTML = $(event.target).closest('.card-container');
@@ -108,7 +74,6 @@ if (event.target.className === "delete-button") {
     cardHTML.remove();
     } 
 };
-
 
 function upvote(event) {
     var retrieveTask = getTask(event);
@@ -134,6 +99,18 @@ function downvote(event) {
     }
     localStoreCard(retrieveTask);
     $($(event.target).siblings('p.quality').children()[0]).text(taskArray[retrieveTask.quality]);
+};
+
+function editCard (event) {
+    var retrieveTask = getTask(event);
+    var elementToChange;
+    if (event.target.className === 'title-of-card') {
+        elementToChange = 'title';
+    } else if (event.target.className === 'body-of-card') {
+        elementToChange = 'body';
+    }
+    retrieveTask[elementToChange] = $(event.target).text();
+    localStoreCard(retrieveTask);
 };
 
 
