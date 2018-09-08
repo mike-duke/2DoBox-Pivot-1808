@@ -1,34 +1,27 @@
-var title = $('#title-input').val();
-var body = $('#body-input').val();
+
 var numCards = 0;
-var qualityVariable = "swill";
+var qualityArray = ['swill', 'plausible', 'genius'];
 
+$('.save-btn').on('click',function() {
+    var task = new Task($('#title-input').val(), $('#body-input').val()) 
+    createCard(task);
+});
 
-// var newCard = function(id , title , body , quality) {
-//     return '<div id="' + id + '"class="card-container"><h2 class="title-of-card">'  
-//             + title +  '</h2>'
-//             + '<button class="delete-button"></button>'
-//             +'<p class="body-of-card">'
-//             + body + '</p>'
-//             + '<button class="upvote"></button>' 
-//             + '<button class="downvote"></button>' 
-//             + '<p class="quality">' + 'quality:' + '<span class="qualityVariable">' + quality + '</span>' + '</p>'
-//             + '<hr>' 
-//             + '</div>';
-// };
-
-
-function createCard() {
+function createCard(task) {
+    console.log(task.title)
     var newCard = `<article class="card-container">
-                    <h2 class="title-of-card" contenteditable="true">${}</h2>
+                    <h2 class="title-of-card" contenteditable="true">${task.title}</h2>
                     <button class="delete-button"></button>
-                    <p class="body-of-card" contenteditable="true">${}</p>
+                    <p class="body-of-card" contenteditable="true">${task.body}</p>
                     <button class="upvote"></button>
                     <button class="downvote"></button>
-                    < class="quality">quality: 
-                    <span class="qualityVariable">${}</span></p>
+                    <p class="quality">quality: 
+                    <span class="qualityVariable">${qualityArray[task.quality]}</span>
+                    </p>
                     <hr>
                     </article>`;
+    $('.card-area').prepend(newCard);
+    localStoreCard(task);
 };
 
 function Task(title, body) {
@@ -38,16 +31,19 @@ function Task(title, body) {
     this.key = Date.now();
 };
 
+var keyArray = Object.keys(localStorage);
+console.log(keyArray)
 
-$.each(localStorage, function(key) {
-    var cardData = JSON.parse(this);
+keyArray.forEach(function(key) {
+    var cardData = JSON.parse(localStorage.getItem(key));
     numCards++;
-    $( ".bottom-box" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
+    createCard(cardData);
 });
 
-var localStoreCard = function() {
-    var cardString = JSON.stringify(cardObject());
-    localStorage.setItem('card' + numCards  , cardString);
+
+function localStoreCard(task) {
+    var cardString = JSON.stringify(task);
+    localStorage.setItem(task.key, cardString);
 }
 
 $('.save-btn').on('click', function(event) {
@@ -57,12 +53,12 @@ $('.save-btn').on('click', function(event) {
     };  
 
     numCards++;
-    $( ".bottom-box" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
-    localStoreCard();
+    // $( ".card-area" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
+    createCard();
     $('form')[0].reset();
 });
 
-$(".bottom-box").on('click', function(event){
+$(".card-area").on('click', function(event){
     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
     var qualityVariable;
 
