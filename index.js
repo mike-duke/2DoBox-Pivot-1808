@@ -7,9 +7,13 @@ $('.save-btn').on('click',function() {
     createCard(task);
 });
 
+$('.card-area').on('click', function(event) {
+    deleteCard(event);
+});
+
+
 function createCard(task) {
-    console.log(task.title)
-    var newCard = `<article class="card-container">
+    var newCard = `<article id="${task.key}" class="card-container">
                     <h2 class="title-of-card" contenteditable="true">${task.title}</h2>
                     <button class="delete-button"></button>
                     <p class="body-of-card" contenteditable="true">${task.body}</p>
@@ -46,17 +50,16 @@ function localStoreCard(task) {
     localStorage.setItem(task.key, cardString);
 }
 
-$('.save-btn').on('click', function(event) {
-    event.preventDefault();
-    if ($('#title-input').val() === "" || $('#body-input').val() === "") {
-       return false;
-    };  
+// $('.save-btn').on('click', function(event) {
+//     event.preventDefault();
+//     if ($('#title-input').val() === "" || $('#body-input').val() === "") {
+//        return false;
+//     };  
 
-    numCards++;
-    // $( ".card-area" ).prepend(newCard('card' + numCards, $('#title-input').val(), $('#body-input').val(), qualityVariable)); 
-    createCard();
-    $('form')[0].reset();
-});
+//     numCards++;
+//     createCard();
+//     $('form')[0].reset();
+// });
 
 $(".card-area").on('click', function(event){
     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
@@ -98,13 +101,17 @@ $(".card-area").on('click', function(event){
     localStorage.setItem(cardHTMLId, newCardJSON);
     }
    
-    else if (event.target.className === "delete-button") {
-        var cardHTML = $(event.target).closest('.card-container').remove();
-        var cardHTMLId = cardHTML[0].id;
-        localStorage.removeItem(cardHTMLId);
-    }
 });
       
+function deleteCard(event) {
+if (event.target.className === "delete-button") {
+    var cardHTML = $(event.target).closest('.card-container');
+    var cardHTMLId = cardHTML[0].id;
+    localStorage.removeItem(cardHTMLId);
+    cardHTML.remove();
+    } 
+};
+
 
 
 
