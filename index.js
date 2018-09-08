@@ -1,6 +1,6 @@
 
 var numCards = 0;
-var qualityArray = ['swill', 'plausible', 'genius'];
+var taskArray = ['none', 'low', 'normal', 'high' ,'critical'];
 
 $('.save-btn').on('click',function() {
     var task = new Task($('#title-input').val(), $('#body-input').val()) 
@@ -9,8 +9,9 @@ $('.save-btn').on('click',function() {
 
 $('.card-area').on('click', function(event) {
     deleteCard(event);
+    upvote(event);
+    downvote(event);
 });
-
 
 function createCard(task) {
     var newCard = `<article id="${task.key}" class="card-container">
@@ -20,7 +21,7 @@ function createCard(task) {
                     <button class="upvote"></button>
                     <button class="downvote"></button>
                     <p class="quality">quality: 
-                    <span class="qualityVariable">${qualityArray[task.quality]}</span>
+                    <span class="qualityVariable">${taskArray[task.quality]}</span>
                     </p>
                     <hr>
                     </article>`;
@@ -44,64 +45,60 @@ keyArray.forEach(function(key) {
     createCard(cardData);
 });
 
-
 function localStoreCard(task) {
     var cardString = JSON.stringify(task);
     localStorage.setItem(task.key, cardString);
-}
+};
 
-// $('.save-btn').on('click', function(event) {
-//     event.preventDefault();
-//     if ($('#title-input').val() === "" || $('#body-input').val() === "") {
-//        return false;
-//     };  
-
-//     numCards++;
-//     createCard();
-//     $('form')[0].reset();
-// });
-
-$(".card-area").on('click', function(event){
-    var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
-    var qualityVariable;
-
-    if (event.target.className === "upvote" || event.target.className === "downvote"){
-
-        if (event.target.className === "upvote" && currentQuality === "plausible"){
-            qualityVariable = "genius";
-            $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-               
-        } else if (event.target.className === "upvote" && currentQuality === "swill") {
-            qualityVariable = "plausible";
-            $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-               
-        } else if (event.target.className === "downvote" && currentQuality === "plausible") {
-            qualityVariable = "swill"
-            $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-
-        } else if (event.target.className === "downvote" && currentQuality === "genius") {
-            qualityVariable = "plausible"
-            $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
-
-        } else if (event.target.className === "downvote" && currentQuality === "swill") {
-            qualityVariable = "swill";
-        
-        } else if (event.target.className === "upvote" && currentQuality === "genius") {
-            qualityVariable = "genius";
-        }
-
+function getTask(event) {
     var cardHTML = $(event.target).closest('.card-container');
     var cardHTMLId = cardHTML[0].id;
-    var cardObjectInJSON = localStorage.getItem(cardHTMLId);
-    var cardObjectInJS = JSON.parse(cardObjectInJSON);
+    var retrieveTask = JSON.parse(localStorage.getItem(cardHTMLId));
+    return retrieveTask;
+};
 
-    cardObjectInJS.quality = qualityVariable;
+// $(".card-area").on('click', function(event){
+//     var currentQuality = $($(event.target).siblings('p.quality').children()[0]).text().trim();
+//     var qualityVariable;
 
-    var newCardJSON = JSON.stringify(cardObjectInJS);
-    localStorage.setItem(cardHTMLId, newCardJSON);
-    }
+//     if (event.target.className === "upvote" || event.target.className === "downvote"){
+
+//         if (event.target.className === "upvote" && currentQuality === "plausible"){
+//             qualityVariable = "genius";
+//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
+               
+//         } else if (event.target.className === "upvote" && currentQuality === "swill") {
+//             qualityVariable = "plausible";
+//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
+               
+//         } else if (event.target.className === "downvote" && currentQuality === "plausible") {
+//             qualityVariable = "swill"
+//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
+
+//         } else if (event.target.className === "downvote" && currentQuality === "genius") {
+//             qualityVariable = "plausible"
+//             $($(event.target).siblings('p.quality').children()[0]).text(qualityVariable);
+
+//         } else if (event.target.className === "downvote" && currentQuality === "swill") {
+//             qualityVariable = "swill";
+        
+//         } else if (event.target.className === "upvote" && currentQuality === "genius") {
+//             qualityVariable = "genius";
+//         }
+
+//     var cardHTML = $(event.target).closest('.card-container');
+//     var cardHTMLId = cardHTML[0].id;
+//     var cardObjectInJSON = localStorage.getItem(cardHTMLId);
+//     var cardObjectInJS = JSON.parse(cardObjectInJSON);
+
+//     cardObjectInJS.quality = qualityVariable;
+
+//     var newCardJSON = JSON.stringify(cardObjectInJS);
+//     localStorage.setItem(cardHTMLId, newCardJSON);
+//     }
    
-});
+// });
+
       
 function deleteCard(event) {
 if (event.target.className === "delete-button") {
@@ -110,6 +107,33 @@ if (event.target.className === "delete-button") {
     localStorage.removeItem(cardHTMLId);
     cardHTML.remove();
     } 
+};
+
+
+function upvote(event) {
+    var retrieveTask = getTask(event);
+    if (event.target.className !== 'upvote') {
+        return;
+    } else if (retrieveTask.quality === 4) {
+        return;
+    } else {
+        retrieveTask.quality++
+    }
+    localStoreCard(retrieveTask);
+    $($(event.target).siblings('p.quality').children()[0]).text(taskArray[retrieveTask.quality]);
+};
+
+function downvote(event) {
+    var retrieveTask = getTask(event);
+    if (event.target.className !== 'downvote') {
+        return;
+    } else if (retrieveTask.quality === 0) {
+        return;
+    } else {
+        retrieveTask.quality--
+    }
+    localStoreCard(retrieveTask);
+    $($(event.target).siblings('p.quality').children()[0]).text(taskArray[retrieveTask.quality]);
 };
 
 
