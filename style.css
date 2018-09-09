@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 }
 
@@ -14,7 +14,6 @@
     background-color: #e5f3f2;
     box-sizing: border-box;
     height: 300px;
-    margin: 0;
     text-align: center;
 }
 
@@ -32,36 +31,31 @@
 }
 
 #title-input {
-    align-items: center;
-    display: flex;
     height: 30px;
     justify-content: space-between;
-    width: 45%;
+    width: 60%;
 }
 
 #body-input {
-    align-items: center;
-    display: flex;
     height: 30px;
     justify-content: space-between;
-    width: 45%;
+    width: 60%;
 }
-
-
 
 #search-input {
     height: 30px;
-    margin-top: 50px;
-    width: 45%;
+    margin: 50px auto 20px auto;
+    width: 60%;
 }
 
 .save-btn {
     background-color: #00a79d;
     border: none;
     color: #fff;
-    font-size: 120%;
-    height: 30px;
-    width: 45.5%;
+    font-size: 2em;
+    padding: 2px;
+    /*height: 30px;*/
+    width: 60%;
 }
 
 .save-btn:hover {
@@ -69,25 +63,24 @@
 }
 
 input {
-    align-items: center;
     display: flex;
     font-family: 'Open Sans', sans-serif;
     font-size: 100%;
-    justify-content: space-between;
     margin: auto;
 }
 
 .card-container {
-    margin: auto;
-    /*position: relative;*/
-    width: 45%;
+    margin:  10px auto 50px auto;
+    position: relative;
+    width: 60%;
+    line-height: 2em;
 }
 
 .card {
     background-color: #ffffff;
     display: flex;
-    /*height: auto;
-    margin: auto;*/
+    /*height: auto;*/
+    /*margin: auto;*/
     width: 100%;
 }
 
@@ -110,27 +103,29 @@ p {
     font-family: 'Open Sans', sans-serif;
 }
 
-.body-of-card{
+.body-of-card {
     color: #939598;
     font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
+}
+
+.buttons-and-quality-rating {
+    display: inline-flex;
+    width: 50%;
+    border: 3px solid yellow;
 }
 
 button {
-    background-color: transparent;
     border: none;
 }
 
 .upvote {
     background-image: url(./images/upvote.svg);
-    background-size: cover;
     height: 20px;
     margin-right: 5px; 
     width: 20px;
 }
 
 .upvote:hover {
-    background-color: transparent;
     background-image: url(./images/upvote-hover.svg);
     background-size: cover;
     height: 20px;
@@ -139,7 +134,6 @@ button {
 
 .downvote {
     background-image: url(./images/downvote.svg);
-    background-size: cover;
     height: 20px;
     margin-right: 5px; 
     width: 20px;
@@ -154,7 +148,6 @@ button {
 
 .delete-button {
     background-image: url(./images/delete.svg);
-    background-size: cover;
     height: 20px;
     position: absolute;
     right: 10px;
@@ -164,7 +157,6 @@ button {
 
 .delete-button:hover {
     background-image: url(./images/delete-hover.svg);
-    background-size: cover;
     height: 20px;
     width: 20px;
 }
