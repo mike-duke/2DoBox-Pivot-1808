@@ -25,11 +25,13 @@ function createCard(task) {
                     <h2 class="title-of-card" contenteditable="true">${task.title}</h2>
                     <button class="delete-button"></button>
                     <p class="body-of-card" contenteditable="true">${task.body}</p>
+                    <div class="buttons-and-quality-rating">
                     <button class="upvote"></button>
                     <button class="downvote"></button>
                     <p class="quality">quality: 
                     <span class="qualityVariable">${taskArray[task.quality]}</span>
                     </p>
+                    </div>
                     <hr>
                     </article>`;
     $('.card-area').prepend(newCard);
