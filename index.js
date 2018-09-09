@@ -1,6 +1,8 @@
-
-var numCards = 0;
 var taskArray = ['none', 'low', 'normal', 'high' ,'critical'];
+
+loadAllCards();
+
+$('.title-input').focus();
 
 $('.save-btn').on('click',function() {
     var task = new Task($('#title-input').val(), $('#body-input').val()) 
@@ -16,9 +18,13 @@ $('.card-area').on('click', function(event) {
     downvote(event);
 });
 
-$('.card-area').on('keydown', function(event) {
+$('.card-area').on('keyup', function(event) {
     editCard(event);
 });
+
+$('.search-input').on('keyup', function(event) {
+  searchTasks(event)
+})
 
 function createCard(task) {
     var newCard = `<article id="${task.key}" class="card-container">
@@ -45,17 +51,16 @@ function Task(title, body) {
     this.key = Date.now();
 };
 
+function loadAllCards() {
 var keyArray = Object.keys(localStorage);
-console.log(keyArray)
 
 keyArray.forEach(function(key) {
     var cardData = JSON.parse(localStorage.getItem(key));
-    numCards++;
     createCard(cardData);
-});
+  });
+}
 
 function localStoreCard(task) {
-    console.log(task)
     var cardString = JSON.stringify(task);
     localStorage.setItem(task.key, cardString);
 };
@@ -115,13 +120,10 @@ function editCard (event) {
     localStoreCard(retrieveTask);
 };
 
-
-
-
-
-
-
-
-
-
-
+function searchTasks(event) {
+  $('.card-container').map(function() {
+    var trueTitle = $(this).children('.title-of-card').text().includes($('.search-input').val());
+    var trueBody = $(this).children('.body-of-card').text().includes($('.search-input').val()); 
+    $(this).toggle(trueTitle || trueBody);
+  })
+}
