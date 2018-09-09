@@ -1,16 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto Slab', serif;
-}
-
-.container-box {
-    margin: 0;
-}
-
-body {
-    box-sizing: border-box;
-    margin: 0;
 }
 
 .top-box {
@@ -21,15 +18,17 @@ body {
     text-align: center;
 }
 
-h1{
-    color: #6d6e71;
+.idea-box-title {
     display: inline-block;
     font-size: 275%;
-    margin-bottom:  30px;
 }
 
-.idea {
+.idea { 
     color: #00a79d;
+}
+
+.box {
+    color: #6d6e71;
 }
 
 #title-input {
@@ -47,6 +46,8 @@ h1{
     justify-content: space-between;
     width: 45%;
 }
+
+
 
 #search-input {
     height: 30px;
@@ -78,18 +79,19 @@ input {
 
 .card-container {
     margin: auto;
-    position: relative;
+    /*position: relative;*/
     width: 45%;
 }
 
 .card {
     background-color: #ffffff;
-    height: auto;
-    margin: auto;
-    width: 45%;
+    display: flex;
+    /*height: auto;
+    margin: auto;*/
+    width: 100%;
 }
 
-.title-of-card{
+.title-of-card {
     color: #6D6E71;
     display: inline-block;
     font-family: 'Roboto Slab', serif;
@@ -173,8 +175,18 @@ button {
         width: 85%;
     }
 
+    .h1 {
+        font-size: 200%;
+    }
+
+    #body-input::placeholder {
+    
+    }
+
     #search-input {
         border: solid #999 1px;
     }
+
+
 }
 
