@@ -1,28 +1,39 @@
-var taskArray = ['none', 'low', 'normal', 'high' ,'critical'];
+var importanceArray = ['none', 'low', 'normal', 'high' ,'critical'];
 
 loadAllCards();
 
 $('.title-input').focus();
+$('.title-input').on('keydown', function(event) {
+  if ($('.title-input').val() !== '' && $('.body-input').val() !== '') {
+    $('.save-btn').attr('disabled', false);
+  }
+});
 
+$('.body-input').on('keydown', function(event) {
+  if ($('.title-input').val() !== '' && $('.body-input').val() !== '') {
+    $('.save-btn').attr('disabled', false);
+  }
+});
+
+$('.save-btn').attr('disabled', true)
 $('.save-btn').on('click',function() {
   event.preventDefault();
   var task = new Task($('.title-input').val(), $('.body-input').val()) 
   createCard(task);
   storeCard(task);
   clearInputs();
+  $('.save-btn').attr('disabled', true);
 });
 
-$('.card-area').on('click', verifyClick);
+$('.search-input').on('keyup', filterTasks);
 
+$('.card-area').on('click', verifyClick);
+$('.card-area').on('keyup', editCard);
 $('.card-area').on('keydown', function(event) {
   if (event.keyCode === 13) {
     event.target.blur();
   }
-})
-
-$('.card-area').on('keyup', editCard);
-
-$('.search-input').on('keyup', filterTasks);
+});
 
 function createCard(task) {
   var newCard = `<article id="${task.key}" class="card-container">
@@ -33,7 +44,7 @@ function createCard(task) {
                   <button class="upvote"></button>
                   <button class="downvote"></button>
                   <p class="quality">importance: 
-                  <span class="qualityVariable">${taskArray[task.quality]}</span>
+                  <span class="qualityVariable">${importanceArray[task.quality]}</span>
                   </p>
                   </div>
                   <hr>
@@ -49,11 +60,10 @@ function Task(title, body) {
 };
 
 function loadAllCards() {
-var keyArray = Object.keys(localStorage);
-keyArray.forEach(function(key) {
-  var cardData = JSON.parse(localStorage.getItem(key));
-  createCard(cardData);
-  });
+  var taskArray = getTaskArray();
+  taskArray.forEach(function(task) {
+    createCard(task);
+  })
 }
 
 function clearInputs() {
@@ -77,7 +87,6 @@ function storeCard(task) {
   var cardString = JSON.stringify(task);
   localStorage.setItem(task.key, cardString);
 };
-
 
 function getTask(event) {
   var cardHTML = $(event.target).closest('.card-container');
@@ -129,10 +138,21 @@ function editCard (event) {
   storeCard(retrieveTask);
 };
 
-function filterTasks(event) {
-  $('.card-container').map(function() {
-    var trueTitle = $(this).children('.title-of-card').text().includes($('.search-input').val());
-    var trueBody = $(this).children('.body-of-card').text().includes($('.search-input').val()); 
-    $(this).toggle(trueTitle || trueBody);
+function filterTasks() {
+  var taskArray = getTaskArray();
+  var filteredArray = taskArray.filter(function(task) {
+    return (task.title.includes($('.search-input').val()) || (task.body.includes($('.search-input').val())));
+  });
+  $('.card-container').remove();
+  filteredArray.forEach(function(task) {
+    createCard(task);
+  });
+}
+
+function getTaskArray() {
+  var keyArray = Object.keys(localStorage);
+  var taskArray = keyArray.map(function(key) {
+    return JSON.parse(localStorage.getItem(key));
   })
+  return taskArray;
 }
