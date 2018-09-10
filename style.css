@@ -4,25 +4,26 @@
     padding: 0;
 }
 
-.container {
+main {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto Slab', serif;
 }
 
-.top-box {
+.input-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: #e5f3f2;
     height: 300px;
     text-align: center;
 }
 
-.idea-box-title {
+.todo-box-title {
     font-size: 275%;
 }
 
-.idea { 
+.todo { 
     color: #00a79d;
 }
 
@@ -30,15 +31,15 @@
     color: #6d6e71;
 }
 
-#title-input,
-#body-input,
-#search-input {
+.title-input,
+.body-input,
+.search-input {
     height: 40px;
     width: 60%;
     font-size: 1.5em;
 }
 
-#search-input {
+.search-input {
     margin: 50px auto 20px auto;
 }
 
