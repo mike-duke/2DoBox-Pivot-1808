@@ -7,26 +7,21 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
-
 <body>
-    <main class="container">
-        <article class="top-box">
-            <form>
-                <div class="idea-box-title">
-                    <h1 class="idea">idea<span class="box">box</h1>
-                </div>
-                <input id="title-input" type="text" placeholder="Title"><br />
-                <input id="body-input" type="text" placeholder="Body"> 
-                <button class="save-btn">save</button>
-            </form>
-        </article>
-        
-        <input id="search-input" type="text" placeholder="Search">
-
-        <section class="card-area"></section>
-
-    </main>
-
-    <script src="./jquery/jquery-3.2.1.js"></script>
-    <script src="./index.js"></script>
+  <main class="container">
+    <header class="top-box">
+      <form>
+        <div class="idea-box-title">
+          <h1 class="idea" aria-label="idea box app to save, rate, and search your ideas">idea<span class="box">box</h1>
+        </div>
+        <input id="title-input" type="text" placeholder="Title" aria-label="enter the title of your idea here">
+        <input id="body-input" type="text" placeholder="Body" aria-label="enter the body of your idea here"> 
+        <button class="save-btn">save</button>
+      </form>
+    </header>
+    <input id="search-input" type="text" placeholder="Search" aria-label="search for individual ideas or multiple ideas by rating">
+    <section class="card-area" aria-label="saved ideas"></section>
+  </main>
+  <script src="./jquery/jquery-3.2.1.js"></script>
+  <script src="./index.js"></script>
 </body>

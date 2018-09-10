@@ -11,14 +11,14 @@
 }
 
 .top-box {
+    display: flex;
+    justify-content: center;
     background-color: #e5f3f2;
-    box-sizing: border-box;
     height: 300px;
     text-align: center;
 }
 
 .idea-box-title {
-    display: inline-block;
     font-size: 275%;
 }
 
@@ -30,22 +30,16 @@
     color: #6d6e71;
 }
 
-#title-input {
-    height: 30px;
-    justify-content: space-between;
+#title-input,
+#body-input,
+#search-input {
+    height: 40px;
     width: 60%;
-}
-
-#body-input {
-    height: 30px;
-    justify-content: space-between;
-    width: 60%;
+    font-size: 1.5em;
 }
 
 #search-input {
-    height: 30px;
     margin: 50px auto 20px auto;
-    width: 60%;
 }
 
 .save-btn {
@@ -55,7 +49,8 @@
     font-size: 2em;
     padding: 2px;
     /*height: 30px;*/
-    width: 60%;
+    margin-top: 22px;
+    /*width: 60%;*/
 }
 
 .save-btn:hover {
@@ -65,7 +60,6 @@
 input {
     display: flex;
     font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
     margin: auto;
 }
 
@@ -73,15 +67,7 @@ input {
     margin:  10px auto 50px auto;
     position: relative;
     width: 60%;
-    line-height: 2em;
-}
-
-.card {
-    background-color: #ffffff;
-    display: flex;
-    /*height: auto;*/
-    /*margin: auto;*/
-    width: 100%;
+    /*line-height: 3em;*/
 }
 
 .title-of-card {
@@ -89,6 +75,7 @@ input {
     display: inline-block;
     font-family: 'Roboto Slab', serif;
     font-size: 140%;
+    line-height: 2em;
 }
 
 h2 {
@@ -106,11 +93,13 @@ p {
 .body-of-card {
     color: #939598;
     font-family: 'Open Sans', sans-serif;
+    margin-bottom: 30px;
+    /*scroll*/
 }
 
 .buttons-and-quality-rating {
     display: inline-flex;
-    width: 50%;
+    width: 60%;
     border: 3px solid yellow;
 }
 
@@ -128,8 +117,6 @@ button {
 .upvote:hover {
     background-image: url(./images/upvote-hover.svg);
     background-size: cover;
-    height: 20px;
-    width: 20px;
 }
 
 .downvote {
@@ -142,8 +129,6 @@ button {
 .downvote:hover {
     background-image: url(./images/downvote-hover.svg);
     background-size: cover;
-    height: 20px;
-    width: 20px;
 }
 
 .delete-button {
@@ -157,8 +142,6 @@ button {
 
 .delete-button:hover {
     background-image: url(./images/delete-hover.svg);
-    height: 20px;
-    width: 20px;
 }
 
 @media(max-width: 640px){
