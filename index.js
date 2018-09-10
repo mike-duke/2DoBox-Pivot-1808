@@ -12,14 +12,7 @@ $('.save-btn').on('click',function() {
   clearInputs();
 });
 
-$('.card-area').on('click', function(event) {
-  if (event.target === undefined) {
-      return;
-  }
-  deleteCard(event);
-  upvote(event);
-  downvote(event);
-});
+$('.card-area').on('click', verifyClick);
 
 $('.card-area').on('keydown', function(event) {
   if (event.keyCode === 13) {
@@ -27,13 +20,9 @@ $('.card-area').on('keydown', function(event) {
   }
 })
 
-$('.card-area').on('keyup', function(event) {
-  editCard(event);
-});
+$('.card-area').on('keyup', editCard);
 
-$('.search-input').on('keyup', function(event) {
-  filterTasks(event)
-})
+$('.search-input').on('keyup', filterTasks);
 
 function createCard(task) {
   var newCard = `<article id="${task.key}" class="card-container">
@@ -73,6 +62,17 @@ function clearInputs() {
   $('.title-input').focus();
 }
 
+function verifyClick(event) {
+  var cardClasses = ['delete-button', 'upvote', 'downvote'];
+  for (i = 0; i < cardClasses.length; i++) {
+    if (event.target.className === cardClasses[i]) {
+      deleteCard(event);
+      upvote(event);
+      downvote(event);
+    }
+  }
+}
+
 function storeCard(task) {
   var cardString = JSON.stringify(task);
   localStorage.setItem(task.key, cardString);
@@ -87,7 +87,7 @@ function getTask(event) {
 };
 
 function deleteCard(event) {
-if (event.target.className === "delete-button") {
+if (event.target.className === 'delete-button') {
   var cardHTML = $(event.target).closest('.card-container');
   var cardHTMLId = cardHTML[0].id;
   localStorage.removeItem(cardHTMLId);
