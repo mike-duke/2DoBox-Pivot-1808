@@ -15,12 +15,12 @@ main {
     flex-direction: column;
     justify-content: center;
     background-color: #e5f3f2;
-    height: 300px;
     text-align: center;
 }
 
 .todo-box-title {
-    font-size: 275%;
+    font-size: 2.2em;
+    margin: 25px 0 25px 0;
 }
 
 .todo { 
@@ -37,21 +37,30 @@ main {
     height: 40px;
     width: 60%;
     font-size: 1.5em;
+    border: 2.2px solid #C0C0C0;
+    padding-left: 7px;
+}
+
+input::placeholder {
+    color: #C0C0C0;
+}
+
+.title-input {
+    margin-bottom: 16px;
 }
 
 .search-input {
-    margin: 50px auto 20px auto;
+    margin: 30px auto 20px auto;
 }
 
 .save-btn {
-    background-color: #00a79d;
-    border: none;
-    color: #fff;
-    font-size: 2em;
-    padding: 2px;
-    /*height: 30px;*/
-    margin-top: 22px;
-    /*width: 60%;*/
+  background-color: #00A79D;
+  color: #FFFFFF;
+  font-size: 1.5em;
+  height: 1.9em;
+  margin-bottom: 32px;
+  margin-top: 20px;
+  width: 60%;
 }
 
 .save-btn:hover {
@@ -68,22 +77,14 @@ input {
     margin:  10px auto 50px auto;
     position: relative;
     width: 60%;
-    /*line-height: 3em;*/
 }
 
 .title-of-card {
     color: #6D6E71;
     display: inline-block;
     font-family: 'Roboto Slab', serif;
-    font-size: 140%;
+    font-size: 1.65em;
     line-height: 2em;
-}
-
-h2 {
-   color: #6d6e71; 
-   display: inline-block;
-   font-family: 'Roboto Slab', serif;
-   font-size: 150%;
 }
 
 p {
@@ -94,14 +95,17 @@ p {
 .body-of-card {
     color: #939598;
     font-family: 'Open Sans', sans-serif;
-    margin-bottom: 30px;
+    margin-bottom: 27px;
+    font-size: 1.3em;
+    line-height: 25px;
     /*scroll*/
 }
 
 .buttons-and-quality-rating {
     display: inline-flex;
+    justify-content: space-between;
     width: 60%;
-    border: 3px solid yellow;
+    margin-bottom: 25px;
 }
 
 button {
@@ -110,9 +114,9 @@ button {
 
 .upvote {
     background-image: url(./images/upvote.svg);
-    height: 20px;
+    height: 30px;
     margin-right: 5px; 
-    width: 20px;
+    width: 30px;
 }
 
 .upvote:hover {
@@ -122,9 +126,9 @@ button {
 
 .downvote {
     background-image: url(./images/downvote.svg);
-    height: 20px;
+    height: 30px;
     margin-right: 5px; 
-    width: 20px;
+    width: 30px;
 }
 
 .downvote:hover {
@@ -132,13 +136,18 @@ button {
     background-size: cover;
 }
 
+.quality {
+    padding-top: 3px;
+    color: #6d6e71;
+}
+
 .delete-button {
     background-image: url(./images/delete.svg);
-    height: 20px;
+    height: 30px;
     position: absolute;
     right: 10px;
-    top: 15px;
-    width: 20px;
+    top: 8px;
+    width: 30px;
 }
 
 .delete-button:hover {
