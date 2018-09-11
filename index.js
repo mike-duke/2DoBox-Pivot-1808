@@ -112,7 +112,7 @@ function upvote(event) {
       retrieveTask.quality++
   }
   storeCard(retrieveTask);
-  $($(event.target).siblings('p.quality').children()[0]).text(taskArray[retrieveTask.quality]);
+  $($(event.target).siblings('p.quality').children()[0]).text(importanceArray[retrieveTask.quality]);
 };
 
 function downvote(event) {
@@ -123,7 +123,7 @@ function downvote(event) {
       retrieveTask.quality--
   }
   storeCard(retrieveTask);
-  $($(event.target).siblings('p.quality').children()[0]).text(taskArray[retrieveTask.quality]);
+  $($(event.target).siblings('p.quality').children()[0]).text(importanceArray[retrieveTask.quality]);
 };
 
 function editCard (event) {
