@@ -45,7 +45,7 @@ main {
     font-size: 1.5em;
     border: 2.2px solid #C0C0C0;
     padding-left: 7px;
-    padding-top: 7px;
+    padding-top: 5.5px;
     height: 45px;
 }
 
@@ -206,13 +206,31 @@ button {
         font-size: 200%;
     }
 
-    #body-input::placeholder {
-    
+    .body-input {
+      height: 105px;
     }
 
-    #search-input {
-        border: solid #999 1px;
+    .search-input {
+      border: solid #999 1px;
     }
+
+    .todo-box-title {
+      font-size: 1.6em;
+      margin: 15px 0 13px 0;
+    }
+
+    .title-input,
+    .search-input,
+    .body-input {
+      width: 85%;
+    }
+
+    .save-btn {
+      margin-bottom: 21px;
+      margin-top: 14px;
+      width: 85%;
+    }
+
 
 
 }
