@@ -44,9 +44,10 @@ function createCard(task) {
                   <button class="upvote"></button>
                   <button class="downvote"></button>
                   <p class="importance">importance: 
-                  <span class="importanceValue">${importanceArray[task.importance]}</span>
+                  <span class="importance-value">${importanceArray[task.importance]}</span>
                   </p>
                   </div>
+                  <button class="complete-button">complete</button>
                   <hr>
                   </article>`;
   $('.card-area').prepend(newCard);
