@@ -40,11 +40,11 @@ function createCard(task) {
                   <h2 class="title-of-card" contenteditable="true">${task.title}</h2>
                   <button class="delete-button"></button>
                   <p class="body-of-card" contenteditable="true">${task.body}</p>
-                  <div class="buttons-and-quality-rating">
+                  <div class="buttons-and-importance-rating">
                   <button class="upvote"></button>
                   <button class="downvote"></button>
-                  <p class="quality">importance: 
-                  <span class="qualityVariable">${importanceArray[task.quality]}</span>
+                  <p class="importance">importance: 
+                  <span class="importanceValue">${importanceArray[task.importance]}</span>
                   </p>
                   </div>
                   <hr>
@@ -55,14 +55,16 @@ function createCard(task) {
 function Task(title, body) {
   this.title = title,
   this.body = body,
-  this.quality = 0;
+  this.importance = 0;
   this.key = Date.now();
+  this.complete = false;
 };
 
 function loadAllCards() {
   var taskArray = getTaskArray();
   taskArray.forEach(function(task) {
-    createCard(task);
+      createCard(task);
+    // }
   })
 }
 
@@ -73,12 +75,13 @@ function clearInputs() {
 }
 
 function verifyClick(event) {
-  var cardClasses = ['delete-button', 'upvote', 'downvote'];
+  var cardClasses = ['delete-button', 'upvote', 'downvote', 'complete'];
   for (i = 0; i < cardClasses.length; i++) {
     if (event.target.className === cardClasses[i]) {
       deleteCard(event);
       upvote(event);
       downvote(event);
+      completeTask(event);
     }
   }
 }
@@ -91,8 +94,8 @@ function storeCard(task) {
 function getTask(event) {
   var cardHTML = $(event.target).closest('.card-container');
   var cardHTMLId = cardHTML[0].id;
-  var retrieveTask = JSON.parse(localStorage.getItem(cardHTMLId));
-  return retrieveTask;
+  var retrievedTask = JSON.parse(localStorage.getItem(cardHTMLId));
+  return retrievedTask;
 };
 
 function deleteCard(event) {
@@ -105,37 +108,37 @@ if (event.target.className === 'delete-button') {
 };
 
 function upvote(event) {
-  var retrieveTask = getTask(event);
-  if (event.target.className !== 'upvote' || retrieveTask.quality === 4) {
+  var retrievedTask = getTask(event);
+  if (event.target.className !== 'upvote' || retrievedTask.importance === 4) {
       return;
   } else {
-      retrieveTask.quality++
+      retrievedTask.importance++
   }
-  storeCard(retrieveTask);
-  $($(event.target).siblings('p.quality').children()[0]).text(importanceArray[retrieveTask.quality]);
+  storeCard(retrievedTask);
+  $($(event.target).siblings('p.importance').children()[0]).text(importanceArray[retrievedTask.importance]);
 };
 
 function downvote(event) {
-  var retrieveTask = getTask(event);
-  if (event.target.className !== 'downvote' || retrieveTask.quality === 0) {
+  var retrievedTask = getTask(event);
+  if (event.target.className !== 'downvote' || retrievedTask.importance === 0) {
       return;
   } else {
-      retrieveTask.quality--
+      retrievedTask.importance--
   }
-  storeCard(retrieveTask);
-  $($(event.target).siblings('p.quality').children()[0]).text(importanceArray[retrieveTask.quality]);
+  storeCard(retrievedTask);
+  $($(event.target).siblings('p.importance').children()[0]).text(importanceArray[retrievedTask.importance]);
 };
 
 function editCard (event) {
-  var retrieveTask = getTask(event);
+  var retrievedTask = getTask(event);
   var elementToChange;
   if (event.target.className === 'title-of-card') {
       elementToChange = 'title';
   } else if (event.target.className === 'body-of-card') {
       elementToChange = 'body';
   }
-  retrieveTask[elementToChange] = $(event.target).text();
-  storeCard(retrieveTask);
+  retrievedTask[elementToChange] = $(event.target).text();
+  storeCard(retrievedTask);
 };
 
 function filterTasks() {
@@ -151,8 +154,38 @@ function filterTasks() {
 
 function getTaskArray() {
   var keyArray = Object.keys(localStorage);
-  var taskArray = keyArray.map(function(key) {
-    return JSON.parse(localStorage.getItem(key));
+  var taskArray = [];
+  keyArray.forEach(function(key) {
+    return taskArray.push(JSON.parse(localStorage.getItem(key)));
+  });
+  var uncompletedTaskArray = taskArray.filter(function(task) {
+    return task.complete === false;
+  });
+  return uncompletedTaskArray;
+}
+
+function completeTask(event) {
+  console.log('click');
+  if (event.target.className === '.complete') {
+    var retrievedTask = getTask(event);
+    retrievedTask.complete = true;
+    $('.card-container').addClass('complete');
+    storeCard(retrievedTask); 
+  }
+}
+
+function showCompltetedTasks(event) {
+  var taskArray = getTaskArray();
+  var keyArray = Object.keys(localStorage);
+  var completedTaskArray = keyArray.filter(function(key) {
+    var completedTask = JSON.parse(localStorage.getItem(key));
+    return completedTask.complete = true;
   })
-  return taskArray;
+  var allTaskArray = completedTaskArray.forEach(function(completeTask) {
+    taskArray.unshift(completeTask);
+  })
+  $('.card-container').remove();
+  allTaskArray.forEach(function(task) {
+    createCard(task);
+  })
 }
