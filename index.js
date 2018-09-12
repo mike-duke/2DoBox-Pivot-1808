@@ -27,6 +27,8 @@ $('.save-btn').on('click',function() {
 
 $('.search-input').on('keyup', filterTasks);
 
+$('.completed-tasks-btn').on('click', showCompltetedTasks);
+
 $('.card-area').on('click', verifyClick);
 $('.card-area').on('keyup', editCard);
 $('.card-area').on('keydown', function(event) {
@@ -67,16 +69,16 @@ function loadAllCards() {
       createCard(task);
     // }
   })
-}
+};
 
 function clearInputs() {
   $('.title-input').val('');
   $('.body-input').val('');
   $('.title-input').focus();
-}
+};
 
 function verifyClick(event) {
-  var cardClasses = ['delete-button', 'upvote', 'downvote', 'complete'];
+  var cardClasses = ['delete-button', 'upvote', 'downvote', 'complete-button'];
   for (i = 0; i < cardClasses.length; i++) {
     if (event.target.className === cardClasses[i]) {
       deleteCard(event);
@@ -151,7 +153,7 @@ function filterTasks() {
   filteredArray.forEach(function(task) {
     createCard(task);
   });
-}
+};
 
 function getTaskArray() {
   var keyArray = Object.keys(localStorage);
@@ -163,30 +165,32 @@ function getTaskArray() {
     return task.complete === false;
   });
   return uncompletedTaskArray;
-}
+};
 
 function completeTask(event) {
   console.log('click');
-  if (event.target.className === '.complete') {
+  if (event.target.className === 'complete-button') {
     var retrievedTask = getTask(event);
-    retrievedTask.complete = true;
-    $('.card-container').addClass('complete');
+    retrievedTask.complete = !retrievedTask.complete;
+    $(event.target).parent().toggleClass('complete');
     storeCard(retrievedTask); 
   }
-}
+};
 
 function showCompltetedTasks(event) {
   var taskArray = getTaskArray();
+  console.log(taskArray)
   var keyArray = Object.keys(localStorage);
   var completedTaskArray = keyArray.filter(function(key) {
     var completedTask = JSON.parse(localStorage.getItem(key));
     return completedTask.complete = true;
-  })
+  });
   var allTaskArray = completedTaskArray.forEach(function(completeTask) {
-    taskArray.unshift(completeTask);
+    return taskArray.unshift(completeTask);
   })
+  console.log(allTaskArray)
   $('.card-container').remove();
   allTaskArray.forEach(function(task) {
     createCard(task);
   })
-}
+};
