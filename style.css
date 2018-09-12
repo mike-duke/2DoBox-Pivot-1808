@@ -32,7 +32,6 @@ main {
 }
 
 .title-input,
-.body-input,
 .search-input {
     height: 40px;
     width: 60%;
@@ -41,7 +40,17 @@ main {
     padding-left: 7px;
 }
 
-input::placeholder {
+.body-input {
+    width: 60%;
+    font-size: 1.5em;
+    border: 2.2px solid #C0C0C0;
+    padding-left: 7px;
+    padding-top: 7px;
+    height: 45px;
+}
+
+input::placeholder, 
+textarea::placeholder{
     color: #C0C0C0;
 }
 
