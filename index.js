@@ -27,7 +27,7 @@ $('.save-btn').on('click',function() {
 
 $('.search-input').on('keyup', filterTasks);
 
-$('.completed-tasks-btn').on('click', showCompltetedTasks);
+$('.completed-tasks-btn').on('click', toggleCompletedTasks);
 
 $('.card-area').on('click', verifyClick);
 $('.card-area').on('keyup', editCard);
@@ -38,7 +38,12 @@ $('.card-area').on('keydown', function(event) {
 });
 
 function createCard(task) {
-  var newCard = `<article id="${task.key}" class="card-container">
+  var completeValue;
+  if (task.complete === true) {
+    completeValue = 'complete';
+  }
+
+  var newCard = `<article id="${task.key}" class="card-container ${completeValue}">
                   <h2 class="title-of-card" contenteditable="true">${task.title}</h2>
                   <button class="delete-button"></button>
                   <p class="body-of-card" contenteditable="true">${task.body}</p>
@@ -65,11 +70,13 @@ function Task(title, body) {
 
 function loadAllCards() {
   var taskArray = getTaskArray();
-  taskArray.forEach(function(task) {
-      createCard(task);
-    // }
+  var incompleteTaskArray = taskArray.filter(function(task) {
+    return task.complete === false;
+  });
+  incompleteTaskArray.forEach(function(task) {
+    createCard(task);
   })
-};
+}
 
 function clearInputs() {
   $('.title-input').val('');
@@ -99,6 +106,15 @@ function getTask(event) {
   var cardHTMLId = cardHTML[0].id;
   var retrievedTask = JSON.parse(localStorage.getItem(cardHTMLId));
   return retrievedTask;
+};
+
+function getTaskArray() {
+  var keyArray = Object.keys(localStorage);
+  var taskArray = [];
+  keyArray.forEach(function(key) {
+    taskArray.push(JSON.parse(localStorage.getItem(key)));
+  });
+  return taskArray;
 };
 
 function deleteCard(event) {
@@ -146,6 +162,7 @@ function editCard (event) {
 
 function filterTasks() {
   var taskArray = getTaskArray();
+  console.log(taskArray)
   var filteredArray = taskArray.filter(function(task) {
     return (task.title.includes($('.search-input').val()) || (task.body.includes($('.search-input').val())));
   });
@@ -155,20 +172,7 @@ function filterTasks() {
   });
 };
 
-function getTaskArray() {
-  var keyArray = Object.keys(localStorage);
-  var taskArray = [];
-  keyArray.forEach(function(key) {
-    return taskArray.push(JSON.parse(localStorage.getItem(key)));
-  });
-  var uncompletedTaskArray = taskArray.filter(function(task) {
-    return task.complete === false;
-  });
-  return uncompletedTaskArray;
-};
-
 function completeTask(event) {
-  console.log('click');
   if (event.target.className === 'complete-button') {
     var retrievedTask = getTask(event);
     retrievedTask.complete = !retrievedTask.complete;
@@ -177,20 +181,21 @@ function completeTask(event) {
   }
 };
 
-function showCompltetedTasks(event) {
-  var taskArray = getTaskArray();
-  console.log(taskArray)
-  var keyArray = Object.keys(localStorage);
-  var completedTaskArray = keyArray.filter(function(key) {
-    var completedTask = JSON.parse(localStorage.getItem(key));
-    return completedTask.complete = true;
-  });
-  var allTaskArray = completedTaskArray.forEach(function(completeTask) {
-    return taskArray.unshift(completeTask);
-  })
-  console.log(allTaskArray)
+function showCompletedTasks(event) {
+  var allTasksArray = getTaskArray();
   $('.card-container').remove();
-  allTaskArray.forEach(function(task) {
-    createCard(task);
+  allTasksArray.forEach(function(task) {
+    createCard(task)
   })
-};
+}
+
+function toggleCompletedTasks(event) {
+  console.log(event)
+  if (event.target.className === 'completed-tasks-btn clicked') {
+    $('.card-container').remove();
+    loadAllCards();
+  } else {
+    showCompletedTasks();
+  }
+  $(event.target).toggleClass('clicked')
+}
