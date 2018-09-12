@@ -14,7 +14,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #e5f3f2;
+    background-color: #B0BDF2;
     text-align: center;
 }
 
@@ -24,7 +24,7 @@ main {
 }
 
 .todo { 
-    color: #00a79d;
+    color: #3D57C2;
 }
 
 .box {
@@ -54,7 +54,7 @@ input::placeholder {
 }
 
 .save-btn {
-  background-color: #00A79D;
+  background-color: #3D57C2;
   color: #FFFFFF;
   font-size: 1.5em;
   height: 1.9em;
@@ -64,7 +64,11 @@ input::placeholder {
 }
 
 .save-btn:hover {
-    background-color: #045e55;
+    background-color: #021666;
+}
+
+.save-btn:disabled {
+    background-color: #B3B5BE;
 }
 
 input {
@@ -101,11 +105,12 @@ p {
     /*scroll*/
 }
 
-.buttons-and-quality-rating {
+.buttons-and-importance-rating {
     display: inline-flex;
     justify-content: space-between;
     width: 250px;
     margin-bottom: 25px;
+    border: 3px dotted red;
 }
 
 button {
@@ -136,15 +141,21 @@ button {
     background-size: cover;
 }
 
-.quality {
+.importance {
     padding-top: 3px;
     color: #6d6e71;
     font-family: serif;
     font-size: 1.3em;
 }
 
-.qualityVariable {
-    font-family: 'Roboto';
+.importance-value {
+    font-family: sans-serif;
+}
+
+.complete-button {
+    float: right;
+    border: 1px solid grey;
+    border-radius: 20%;
 }
 
 .delete-button {
