@@ -53,6 +53,15 @@ input::placeholder {
     margin: 30px auto 20px auto;
 }
 
+.show-completed-tasks {
+    display: flex;
+    justify-content: center;
+}
+
+.completed-tasks-btn {
+    font-size: 1em;
+}
+
 .save-btn {
   background-color: #3D57C2;
   color: #FFFFFF;
@@ -81,6 +90,13 @@ input {
     margin:  10px auto 50px auto;
     position: relative;
     width: 60%;
+}
+
+/*card style after complete is added*/
+
+.complete {
+    background-color: lightgrey;
+
 }
 
 .title-of-card {
