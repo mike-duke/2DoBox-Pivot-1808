@@ -14,7 +14,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #B0BDF2;
+    background-color: #BEC8F4;
     text-align: center;
 }
 
@@ -28,7 +28,7 @@ main {
 }
 
 .box {
-    color: #6d6e71;
+    color: #021666;
 }
 
 .title-input,
@@ -68,7 +68,7 @@ input::placeholder {
 }
 
 .save-btn:disabled {
-    background-color: #B3B5BE;
+    background-color: #6d6e71;
 }
 
 input {
