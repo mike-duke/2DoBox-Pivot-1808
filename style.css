@@ -119,7 +119,6 @@ input {
 
 .title-of-card {
     color: #6D6E71;
-    display: inline-block;
     font-family: 'Roboto Slab', serif;
     font-size: 1.65em;
     line-height: 2em;
@@ -139,7 +138,6 @@ p {
     line-height: 25px;
     margin-bottom: 27px;
     padding-top: 6px;
-    display: inline-block;
     word-break: break-word;
 }
 
