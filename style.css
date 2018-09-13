@@ -106,7 +106,7 @@ input {
 }
 
 .card-container {
-    margin:  10px auto 50px auto;
+    margin: 10px auto 22px auto;
     position: relative;
     width: 60%;
 }
@@ -123,6 +123,8 @@ input {
     font-family: 'Roboto Slab', serif;
     font-size: 1.65em;
     line-height: 2em;
+    display: inline-block;
+    word-break: break-word;
 }
 
 p {
@@ -134,11 +136,11 @@ p {
     color: #939598;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3em;
-    height: 30px;
     line-height: 25px;
     margin-bottom: 27px;
-    overflow-y: scroll;
     padding-top: 6px;
+    display: inline-block;
+    word-break: break-word;
 }
 
 .buttons-and-importance-rating {
@@ -217,14 +219,19 @@ button {
     background-image: url(./images/delete-hover.svg);
 }
 
-@media(max-width: 812px){
+@media(max-width: 414px) {
+
+    .todo-box-title {
+      font-size: 1.5em;
+      margin: 14px 0 13px 0;
+    }
 
     .card-container {
         width: 85%;
     }
 
     .body-input {
-      height: 86px;
+      height: 100px;
       font-size: 1.3em;
     }
 
@@ -233,7 +240,7 @@ button {
     }
 
     .title-and-search-input {
-      height: 32px;
+      height: 38px;
       font-size: 1.3em;
     }
 
@@ -244,10 +251,15 @@ button {
 
     .save-btn {
       font-size: 1.3em;
-      height: 1.7em;
+      height: 2em;
       margin-bottom: 21px;
       margin-top: 14px;
       padding-bottom: 3px;
       width: 85%;
+    }
+
+    .body-of-card {
+      overflow-y: scroll;
+      height: 82px;
     }
 }
