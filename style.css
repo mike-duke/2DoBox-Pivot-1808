@@ -74,6 +74,7 @@ textarea::placeholder {
     background-color: #3D57C2;
     color: white;
     font-size: 1em;
+    margin-bottom: 25px;
     padding: 4px 6px 5px 6px;
 }
 
