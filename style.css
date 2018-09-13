@@ -11,9 +11,6 @@ main {
 }
 
 .input-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     background-color: #BEC8F4;
     text-align: center;
 }
@@ -31,21 +28,27 @@ main {
     color: #021666;
 }
 
+.input-field-style {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .title-and-search-input {
-    height: 40px;
-    width: 60%;
-    font-size: 1.5em;
     border: 2.2px solid #C0C0C0;
+    font-size: 1.5em;
+    height: 40px;
     padding-left: 7px;
+    width: 60%;
 }
 
 .body-input {
-    width: 60%;
-    font-size: 1.5em;
     border: 2.2px solid #C0C0C0;
-    padding-left: 7px;
-    padding-top: 5.5px;
+    font-size: 1.5em;
     height: 45px;
+    padding: 5.5px 0 0 7px;
+    width: 60%;
 }
 
 input::placeholder, 
@@ -68,10 +71,14 @@ textarea::placeholder {
 
 
 .completed-tasks-btn {
-    font-size: 2em;
-    color: white;
     background-color: #3D57C2;
-    padding: 9px 6px 11px 6px;
+    color: white;
+    font-size: 1em;
+    padding: 4px 6px 5px 6px;
+}
+
+.completed-tasks-btn:hover {
+    background-color: lightgrey;
 }
 
 
@@ -80,8 +87,7 @@ textarea::placeholder {
   color: #FFFFFF;
   font-size: 1.5em;
   height: 1.9em;
-  margin-bottom: 32px;
-  margin-top: 20px;
+  margin: 20px 0 32px 0;
   width: 60%;
 }
 
@@ -109,7 +115,6 @@ input {
 
 .complete {
     background-color: #EFEFEF;
-
 }
 
 .title-of-card {
@@ -128,10 +133,12 @@ p {
 .body-of-card {
     color: #939598;
     font-family: 'Open Sans', sans-serif;
-    margin-bottom: 27px;
     font-size: 1.3em;
+    height: 30px;
     line-height: 25px;
-    /*scroll*/
+    margin-bottom: 27px;
+    overflow-y: scroll;
+    padding-top: 6px;
 }
 
 .buttons-and-importance-rating {
@@ -139,7 +146,6 @@ p {
     justify-content: space-between;
     width: 250px;
     margin-bottom: 25px;
-    border: 3px dotted red;
 }
 
 button {
@@ -179,18 +185,19 @@ button {
 
 .importance-value {
     font-family: sans-serif;
+    font-size: .9em;
 }
 
 .complete-button-style {
-    display: flex;
     align-items: center;
-    justify-content: center;
     background-color: lightgreen;
     color: white;
-    padding: 5px;
-    width: 30%;
-    margin: inherit;
+    display: flex;
+    justify-content: center;
     margin-bottom: 20px;
+    margin: inherit;
+    padding: 0 0 3px;
+    width: 30%;
 }
 
 .complete-button-style:hover {
@@ -216,10 +223,6 @@ button {
         width: 85%;
     }
 
-    .h1 {
-        font-size: 200%;
-    }
-
     .body-input {
       height: 86px;
       font-size: 1.3em;
@@ -227,11 +230,6 @@ button {
 
     .search-input {
       margin: 20px auto 20px auto;
-    }
-
-    .todo-box-title {
-      font-size: 1.6em;
-      margin: 15px 0 13px 0;
     }
 
     .title-and-search-input {
@@ -245,15 +243,11 @@ button {
     }
 
     .save-btn {
-      margin-bottom: 21px;
-      margin-top: 14px;
       font-size: 1.3em;
       height: 1.7em;
+      margin-bottom: 21px;
+      margin-top: 14px;
       padding-bottom: 3px;
       width: 85%;
-    }
-
-    .completed-tasks-btn {
-      font-size: 1em;
     }
 }
