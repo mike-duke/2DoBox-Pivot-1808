@@ -10,6 +10,11 @@ $('.title-input').on('keydown', function(event) {
 });
 
 $('.body-input').on('keydown', function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    $('.save-btn').click();
+  }
+
   if ($('.title-input').val() !== '' && $('.body-input').val() !== '') {
     $('.save-btn').attr('disabled', false);
   }
@@ -41,6 +46,8 @@ function createCard(task) {
   var completeValue;
   if (task.complete === true) {
     completeValue = 'complete';
+  } else {
+    completeValue = '';
   }
 
   var newCard = `<article id="${task.key}" class="card-container ${completeValue}">
@@ -87,7 +94,7 @@ function clearInputs() {
 };
 
 function verifyClick(event) {
-  var cardClasses = ['delete-button', 'upvote', 'downvote', 'complete-button'];
+  var cardClasses = ['delete-button', 'upvote', 'downvote', 'complete-button', 'complete-button-style'];
   for (i = 0; i < cardClasses.length; i++) {
     if (event.target.className === cardClasses[i]) {
       deleteCard(event);
@@ -164,7 +171,6 @@ function editCard (event) {
 
 function filterTasks() {
   var taskArray = getTaskArray();
-  console.log(taskArray)
   var filteredArray = taskArray.filter(function(task) {
     return (task.title.includes($('.search-input').val()) || (task.body.includes($('.search-input').val())));
   });
@@ -175,7 +181,7 @@ function filterTasks() {
 };
 
 function completeTask(event) {
-  if (event.target.className === 'complete-button') {
+  if (event.target.className === 'complete-button' || event.target.className === 'complete-button-style') {
     var retrievedTask = getTask(event);
     retrievedTask.complete = !retrievedTask.complete;
     $(event.target).parent().toggleClass('complete');
@@ -192,7 +198,6 @@ function showCompletedTasks(event) {
 }
 
 function toggleCompletedTasks(event) {
-  console.log(event)
   if (event.target.className === 'completed-tasks-btn clicked') {
     $('.card-container').remove();
     loadAllCards();
