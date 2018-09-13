@@ -12,7 +12,7 @@
 
 ### Our Version
 
-<img width="1440" alt="screen shot 2018-09-12 at 8 39 07 pm" src="https://user-images.githubusercontent.com/25753508/45464043-fdf35880-b6cb-11e8-86f9-5460e8530889.png">
+<img width="1440" alt="screen shot 2018-09-12 at 8 40 59 pm" src="https://user-images.githubusercontent.com/25753508/45464091-35fa9b80-b6cc-11e8-9420-35a9a3b78d19.png">
 
 
 
