@@ -31,8 +31,7 @@ main {
     color: #021666;
 }
 
-.title-input,
-.search-input {
+.title-and-search-input {
     height: 40px;
     width: 60%;
     font-size: 1.5em;
@@ -50,7 +49,7 @@ main {
 }
 
 input::placeholder, 
-textarea::placeholder{
+textarea::placeholder {
     color: #C0C0C0;
 }
 
@@ -67,8 +66,16 @@ textarea::placeholder{
     justify-content: center;
 }
 
+
 .completed-tasks-btn {
     font-size: 1em;
+    color: white;
+    background-color: #3D57C2;
+    height: 25px;
+    padding-top: 5px;
+    padding-bottom: 25px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .save-btn {
@@ -104,7 +111,7 @@ input {
 /*card style after complete is added*/
 
 .complete {
-    background-color: lightgrey;
+    background-color: #EFEFEF;
 
 }
 
@@ -196,7 +203,7 @@ button {
     background-image: url(./images/delete-hover.svg);
 }
 
-@media(max-width: 640px){
+@media(max-width: 812px){
 
     .card-container {
         width: 85%;
@@ -207,11 +214,12 @@ button {
     }
 
     .body-input {
-      height: 105px;
+      height: 86px;
+      font-size: 1.3em;
     }
 
     .search-input {
-      border: solid #999 1px;
+      margin: 20px auto 20px auto;
     }
 
     .todo-box-title {
@@ -219,8 +227,12 @@ button {
       margin: 15px 0 13px 0;
     }
 
-    .title-input,
-    .search-input,
+    .title-and-search-input {
+      height: 32px;
+      font-size: 1.3em;
+    }
+
+    .title-and-search-input,
     .body-input {
       width: 85%;
     }
@@ -228,10 +240,16 @@ button {
     .save-btn {
       margin-bottom: 21px;
       margin-top: 14px;
+      font-size: 1.3em;
+      height: 1.7em;
+      padding-bottom: 3px;
       width: 85%;
     }
 
-
-
+    .complete-button {
+      float: none;
+      margin-left: 38%;
+      margin-bottom: 20px;
+    }
 }
 
