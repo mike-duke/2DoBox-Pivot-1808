@@ -1,85 +1,84 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Roboto Slab', serif;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto Slab', serif;
 }
 
 .input-container {
-    background-color: #BEC8F4;
-    text-align: center;
+  background-color: #BEC8F4;
+  text-align: center;
 }
 
 .todo-box-title {
-    font-size: 2.2em;
-    margin: 25px 0 25px 0;
+  font-size: 2.2em;
+  margin: 25px 0 25px 0;
 }
 
-.todo { 
-    color: #3D57C2;
+.todo {
+  color: #3D57C2;
 }
 
 .box {
-    color: #021666;
+  color: #021666;
 }
 
 .input-field-style {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title-and-search-input {
-    border: 2.2px solid #C0C0C0;
-    font-size: 1.5em;
-    height: 45px;
-    padding-left: 7px;
-    width: 60%;
+  border: 2.2px solid #C0C0C0;
+  font-size: 1.5em;
+  height: 45px;
+  padding-left: 7px;
+  width: 60%;
 }
 
 .body-input {
-    border: 2.2px solid #C0C0C0;
-    font-size: 1.5em;
-    height: 45px;
-    padding: 5.5px 0 0 7px;
-    width: 60%;
+  border: 2.2px solid #C0C0C0;
+  font-size: 1.5em;
+  height: 45px;
+  padding: 5.5px 0 0 7px;
+  width: 60%;
 }
 
-input::placeholder, 
+input::placeholder,
 textarea::placeholder {
-    color: #C0C0C0;
+  color: #C0C0C0;
 }
 
 .title-input {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .search-input {
-    margin: 30px auto 20px auto;
+  margin: 30px auto 20px auto;
 }
 
 .show-completed-tasks {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-
 .completed-tasks-btn {
-    background-color: #3D57C2;
-    color: white;
-    font-size: 1em;
-    margin-bottom: 25px;
-    padding: 4px 6px 5px 6px;
+  background-color: #3D57C2;
+  color: white;
+  font-size: 1em;
+  margin-bottom: 25px;
+  padding: 4px 6px 5px 6px;
 }
 
 .completed-tasks-btn:hover {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
 .save-btn {
@@ -92,174 +91,166 @@ textarea::placeholder {
 }
 
 .save-btn:hover {
-    background-color: #021666;
+  background-color: #021666;
 }
 
 .save-btn:disabled {
-    background-color: #6d6e71;
+  background-color: #6d6e71;
 }
 
 input {
-    display: flex;
-    font-family: 'Open Sans', sans-serif;
-    margin: auto;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  margin: auto;
 }
 
 .card-container {
-    margin: 10px auto 22px auto;
-    position: relative;
-    width: 60%;
+  margin: 10px auto 22px auto;
+  position: relative;
+  width: 60%;
 }
 
 /*card style after complete is added*/
 
 .complete {
-    background-color: #EFEFEF;
+  background-color: #EFEFEF;
 }
 
 .title-of-card {
-    color: #6D6E71;
-    font-family: 'Roboto Slab', serif;
-    font-size: 1.65em;
-    line-height: 2em;
-    padding-right: 68px;
-    word-break: break-word;
+  color: #6D6E71;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.65em;
+  line-height: 2em;
+  padding-right: 68px;
+  word-break: break-word;
 }
 
 p {
-    color: #939598;
-    font-family: 'Open Sans', sans-serif;
+  color: #939598;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .body-of-card {
-    color: #939598;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.3em;
-    line-height: 25px;
-    margin-bottom: 27px;
-    padding-top: 6px;
-    word-break: break-word;
+  color: #939598;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3em;
+  line-height: 25px;
+  margin-bottom: 27px;
+  padding-top: 6px;
+  word-break: break-word;
 }
 
 .buttons-and-importance-rating {
-    display: inline-flex;
-    justify-content: space-between;
-    width: 250px;
-    margin-bottom: 25px;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 250px;
+  margin-bottom: 25px;
 }
 
 button {
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 .upvote {
-    background-image: url(./images/upvote.svg);
-    height: 30px;
-    margin-right: 5px; 
-    width: 30px;
+  background-image: url(./images/upvote.svg);
+  height: 30px;
+  margin-right: 5px;
+  width: 30px;
 }
 
 .upvote:hover {
-    background-image: url(./images/upvote-hover.svg);
-    background-size: cover;
+  background-image: url(./images/upvote-hover.svg);
+  background-size: cover;
 }
 
 .downvote {
-    background-image: url(./images/downvote.svg);
-    height: 30px;
-    margin-right: 5px; 
-    width: 30px;
+  background-image: url(./images/downvote.svg);
+  height: 30px;
+  margin-right: 5px;
+  width: 30px;
 }
 
 .downvote:hover {
-    background-image: url(./images/downvote-hover.svg);
-    background-size: cover;
+  background-image: url(./images/downvote-hover.svg);
+  background-size: cover;
 }
 
 .importance {
-    padding-top: 3px;
-    color: #6d6e71;
-    font-family: serif;
-    font-size: 1.3em;
+  padding-top: 3px;
+  color: #6d6e71;
+  font-family: serif;
+  font-size: 1.3em;
 }
 
 .importance-value {
-    font-family: sans-serif;
-    font-size: .9em;
+  font-family: sans-serif;
+  font-size: .9em;
 }
 
 .complete-button-style {
-    align-items: center;
-    background-color: lightgreen;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin: inherit;
-    padding: 0 0 3px;
-    width: 30%;
+  align-items: center;
+  background-color: lightgreen;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin: inherit;
+  padding: 0 0 3px;
+  width: 30%;
 }
 
 .complete-button-style:hover {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
 .delete-button {
-    background-image: url(./images/delete.svg);
-    height: 30px;
-    position: absolute;
-    right: 10px;
-    top: 8px;
-    width: 30px;
+  background-image: url(./images/delete.svg);
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  width: 30px;
 }
 
 .delete-button:hover {
-    background-image: url(./images/delete-hover.svg);
+  background-image: url(./images/delete-hover.svg);
 }
 
 @media(max-width: 414px) {
-
-    .todo-box-title {
-      font-size: 1.5em;
-      margin: 14px 0 13px 0;
-    }
-
-    .card-container {
-        width: 85%;
-    }
-
-    .body-input {
-      height: 100px;
-      font-size: 1.3em;
-    }
-
-    .search-input {
-      margin: 20px auto 20px auto;
-    }
-
-    .title-and-search-input {
-      height: 38px;
-      font-size: 1.3em;
-    }
-
-    .title-and-search-input,
-    .body-input {
-      width: 85%;
-    }
-
-    .save-btn {
-      font-size: 1.3em;
-      height: 2em;
-      margin-bottom: 21px;
-      margin-top: 14px;
-      padding-bottom: 3px;
-      width: 85%;
-    }
-
-    .body-of-card {
-      overflow-y: scroll;
-      height: 82px;
-    }
+  .todo-box-title {
+    font-size: 1.5em;
+    margin: 14px 0 13px 0;
+  }
+  .card-container {
+    width: 85%;
+  }
+  .body-input {
+    height: 100px;
+    font-size: 1.3em;
+  }
+  .search-input {
+    margin: 20px auto 20px auto;
+  }
+  .title-and-search-input {
+    height: 38px;
+    font-size: 1.3em;
+  }
+  .title-and-search-input,
+  .body-input {
+    width: 85%;
+  }
+  .save-btn {
+    font-size: 1.3em;
+    height: 2em;
+    margin-bottom: 21px;
+    margin-top: 14px;
+    padding-bottom: 3px;
+    width: 85%;
+  }
+  .body-of-card {
+    overflow-y: scroll;
+    height: 82px;
+  }
 }

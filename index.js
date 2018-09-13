@@ -1,4 +1,4 @@
-var importanceArray = ['none', 'low', 'normal', 'high', 'critical'];
+var importanceArray = ['none', 'low', 'normal', 'high',   'critical'];
 
 loadAllCards();
 
