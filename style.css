@@ -123,7 +123,7 @@ input {
     font-family: 'Roboto Slab', serif;
     font-size: 1.65em;
     line-height: 2em;
-    display: inline-block;
+    padding-right: 68px;
     word-break: break-word;
 }
 
