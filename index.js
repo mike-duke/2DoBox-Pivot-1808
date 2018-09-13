@@ -54,7 +54,9 @@ function createCard(task) {
                   <span class="importance-value">${importanceArray[task.importance]}</span>
                   </p>
                   </div>
+                  <div class="complete-button-style"
                   <button class="complete-button">complete</button>
+                  </div>
                   <hr>
                   </article>`;
   $('.card-area').prepend(newCard);

@@ -68,15 +68,12 @@ textarea::placeholder {
 
 
 .completed-tasks-btn {
-    font-size: 1em;
+    font-size: 2em;
     color: white;
     background-color: #3D57C2;
-    height: 25px;
-    padding-top: 5px;
-    padding-bottom: 25px;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding: 9px 6px 11px 6px;
 }
+
 
 .save-btn {
   background-color: #3D57C2;
@@ -184,10 +181,20 @@ button {
     font-family: sans-serif;
 }
 
-.complete-button {
-    float: right;
-    border: 1px solid grey;
-    border-radius: 20%;
+.complete-button-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgreen;
+    color: white;
+    padding: 5px;
+    width: 30%;
+    margin: inherit;
+    margin-bottom: 20px;
+}
+
+.complete-button-style:hover {
+    background-color: lightgrey;
 }
 
 .delete-button {
@@ -246,10 +253,7 @@ button {
       width: 85%;
     }
 
-    .complete-button {
-      float: none;
-      margin-left: 38%;
-      margin-bottom: 20px;
+    .completed-tasks-btn {
+      font-size: 1em;
     }
 }
-
