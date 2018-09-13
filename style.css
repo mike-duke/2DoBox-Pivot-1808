@@ -38,7 +38,7 @@ main {
 .title-and-search-input {
     border: 2.2px solid #C0C0C0;
     font-size: 1.5em;
-    height: 40px;
+    height: 45px;
     padding-left: 7px;
     width: 60%;
 }
@@ -74,13 +74,13 @@ textarea::placeholder {
     background-color: #3D57C2;
     color: white;
     font-size: 1em;
+    margin-bottom: 25px;
     padding: 4px 6px 5px 6px;
 }
 
 .completed-tasks-btn:hover {
     background-color: lightgrey;
 }
-
 
 .save-btn {
   background-color: #3D57C2;
@@ -123,7 +123,7 @@ input {
     font-family: 'Roboto Slab', serif;
     font-size: 1.65em;
     line-height: 2em;
-    display: inline-block;
+    padding-right: 68px;
     word-break: break-word;
 }
 
@@ -152,6 +152,7 @@ p {
 
 button {
     border: none;
+    cursor: pointer;
 }
 
 .upvote {
@@ -194,6 +195,7 @@ button {
     align-items: center;
     background-color: lightgreen;
     color: white;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
