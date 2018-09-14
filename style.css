@@ -112,7 +112,7 @@ input {
 
 /*card style after complete is added*/
 
-.complete {
+.card-container[data-complete = true] {
   background-color: #EFEFEF;
 }
 
